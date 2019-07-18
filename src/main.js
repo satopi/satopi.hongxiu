@@ -4,6 +4,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import router from './assets/js/router.js'
 import axios from 'axios'
+import Touch from './assets/js/touch.js'
 
 import Mint from 'mint-ui'
 import '../node_modules/mint-ui/lib/style.css'

@@ -16,7 +16,7 @@
 			</div>
 		</header>
 		<!--navbar-->
-		<i :class="guide" @click="shrink($event)"></i>
+		<i :class="guide" @click="shrink($event)" v-tap="(e)=>vueTouch(e)"></i>
 		<transition enter-active-class="animated slideInDown" leave-active-class="animated slideOutUp">
 			<div class="navbar" v-show="show" style="animation-duration:100ms">
 				<ul>
@@ -242,6 +242,17 @@
     	})
     },
    	methods:{
+   		VueTouch(e){
+   			let b = a.target.previousElementSibling.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild
+        	this.icon = 'icon-caidan'
+        	this.guide = ''
+        	b.parentNode.previousElementSibling.style.paddingLeft = ''
+        	b.parentNode.previousElementSibling.previousElementSibling.childNodes[0].style.color = 'white'
+			b.parentNode.previousElementSibling.style.color = 'white'
+			b.parentNode.nextElementSibling.childNodes[0].style.color = 'white'
+			b.parentNode.parentNode.style.background = ''
+			this.show = !this.show
+   		},
         // 下拉菜单 
         handleDown(a){
         	if(this.icon == 'icon-Delete'){
