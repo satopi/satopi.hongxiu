@@ -67,7 +67,8 @@
 		<!--回到顶部-->
 		<div class="backTop" @click="backTop()" v-show="hide">
 			<img src="../../assets/img/huidaodingbu.svg"/>
-		</div>		
+		</div>	
+		<b>{{scroll}}</b>
 		<!--大神新书-->
 		<section class="container">
 			<div class="Title">
@@ -195,6 +196,10 @@
 </template>
 
 <style scoped>
+	b{
+		position: fixed;
+		top: 10px;
+	}
 	.iconfont{
 		color: white;
 		font-size: 3vh;
@@ -284,8 +289,8 @@
         	this.show = !this.show
         },
         backTop(){
-				document.documentElement.scrollTop = 0;
-			},
+			document.documentElement.scrollTop = 0;
+		},
 		top(){
 			this.scroll = document.documentElement.scrollTop
 			if(this.scroll>300){

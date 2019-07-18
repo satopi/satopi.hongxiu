@@ -297,8 +297,8 @@
         	this.show = !this.show
         },
         backTop(){
-				document.documentElement.scrollTop = 0;
-			},
+			document.documentElement.scrollTop = 0;
+		},
 		top(){
 			this.scroll = document.documentElement.scrollTop
 			if(this.scroll>300){
