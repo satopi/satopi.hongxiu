@@ -284,10 +284,18 @@
         	this.show = !this.show
         },
         backTop(){
-			document.documentElement.scrollTop =  document.documentElement.scrollTop = document.body.scrollTop = 0;
+        	let timer = setInterval(function(){
+        		var oTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        		var speed = Math.floor(-oTop/6)
+        		document.documentElement.scrollTop = document.body.scrollTop = oTop + speed
+        		if (oTop == 0) {
+                    clearInterval(timer);
+                }
+        	},10)
+//			document.documentElement.scrollTop = document.body.scrollTop = 0;
 		},
 		top(){
-			this.scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+			this.scroll = document.documentElement.scrollTop || document.body.scrollTop
 			if(this.scroll>300){
 				this.hide = true;
 			}else{
