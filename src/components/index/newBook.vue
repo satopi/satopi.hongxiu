@@ -285,13 +285,13 @@
         },
         backTop(){
         	let timer = setInterval(function(){
-        		var oTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        		var oTop = document.documentElement.scrollTop || document.body.scrollTop;
         		var speed = Math.floor(-oTop/6)
         		document.documentElement.scrollTop = document.body.scrollTop = oTop + speed
         		if (oTop == 0) {
                     clearInterval(timer);
                 }
-        	},10)
+        	},30)
 //			document.documentElement.scrollTop = document.body.scrollTop = 0;
 		},
 		top(){
