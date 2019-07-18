@@ -293,7 +293,7 @@
 			document.documentElement.scrollTop = 0;
 		},
 		top(){
-			this.scroll = document.documentElement.scrollTop
+			this.scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
 			if(this.scroll>300){
 				this.hide = true;
 			}else{
