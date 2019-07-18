@@ -16,7 +16,7 @@
 			</div>
 		</header>
 		<!--navbar-->
-		<i :class="guide" @click="shrink($event)"></i>
+		<i :class="guide" @click="shrink($event)" v-tap="(e)=>vueTouch(e)"></i>
 		<transition enter-active-class="animated slideInDown" leave-active-class="animated slideOutUp">
 			<div class="navbar" v-show="show" style="animation-duration:100ms">
 				<ul>
@@ -587,7 +587,7 @@
 </style>
 
 <script>
-	import {down} from '../../assets/js/commonJS.js'
+	import {down,shrinking} from '../../assets/js/commonJS.js'
 	export default {
     data() {
         return {
@@ -654,16 +654,14 @@
 			}
 		},
 		shrink(a){
-        	let b = a.target.previousElementSibling.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild
+			shrinking(a)
         	this.icon = 'icon-caidan'
         	this.guide = ''
-        	b.parentNode.previousElementSibling.style.paddingLeft = ''
-        	b.parentNode.previousElementSibling.previousElementSibling.childNodes[0].style.color = 'white'
-			b.parentNode.previousElementSibling.style.color = 'white'
-			b.parentNode.nextElementSibling.childNodes[0].style.color = 'white'
-			b.parentNode.parentNode.style.background = ''
 			this.show = !this.show
-        }
+        },
+        VueTouch(e){
+   			this.shrink(a)
+   		}
     }
 }
 </script>

@@ -218,7 +218,7 @@
 </style>
 
 <script>
-	import {down} from '../../assets/js/commonJS.js'
+	import {down,shrinking} from '../../assets/js/commonJS.js'
 	export default {
     data() {
         return {
@@ -242,17 +242,6 @@
     	})
     },
    	methods:{
-   		VueTouch(e){
-   			let b = a.target.previousElementSibling.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild
-        	this.icon = 'icon-caidan'
-        	this.guide = ''
-        	b.parentNode.previousElementSibling.style.paddingLeft = ''
-        	b.parentNode.previousElementSibling.previousElementSibling.childNodes[0].style.color = 'white'
-			b.parentNode.previousElementSibling.style.color = 'white'
-			b.parentNode.nextElementSibling.childNodes[0].style.color = 'white'
-			b.parentNode.parentNode.style.background = ''
-			this.show = !this.show
-   		},
         // 下拉菜单 
         handleDown(a){
         	if(this.icon == 'icon-Delete'){
@@ -268,16 +257,14 @@
         	this.show = !this.show
         },
         shrink(a){
-        	let b = a.target.previousElementSibling.firstElementChild.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild
+        	shrinking(a)
         	this.icon = 'icon-caidan'
-        	this.guide = ''
-        	b.parentNode.previousElementSibling.style.paddingLeft = ''
-        	b.parentNode.previousElementSibling.previousElementSibling.childNodes[0].style.color = 'white'
-			b.parentNode.previousElementSibling.style.color = 'white'
-			b.parentNode.nextElementSibling.childNodes[0].style.color = 'white'
-			b.parentNode.parentNode.style.background = ''
+			this.guide = ''
 			this.show = !this.show
-        }
+        },
+        VueTouch(e){
+   			this.shrink(a)
+   		}
     }
 }
 </script>
