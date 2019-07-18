@@ -68,7 +68,7 @@
 		<div class="backTop" @click="backTop()" v-show="hide">
 			<img src="../../assets/img/huidaodingbu.svg"/>
 		</div>	
-		<b>{{scroll}}</b>
+		<b>{{scroll}}ghcgcgcgcgc</b>
 		<!--大神新书-->
 		<section class="container">
 			<div class="Title">
@@ -198,7 +198,8 @@
 <style scoped>
 	b{
 		position: fixed;
-		top: 10px;
+		top: 50%;
+		left: 50%;
 	}
 	.iconfont{
 		color: white;
