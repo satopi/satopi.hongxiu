@@ -286,10 +286,17 @@
         	this.show = !this.show
         },
         backTop(){
-				document.documentElement.scrollTop = 0;
-			},
+        	let timer = setInterval(function(){
+        		var oTop = document.documentElement.scrollTop || document.body.scrollTop;
+        		var speed = Math.floor(-oTop/6)
+        		document.documentElement.scrollTop = document.body.scrollTop = oTop + speed
+        		if (oTop == 0) {
+                    clearInterval(timer);
+                }
+        	},30)
+		},
 		top(){
-			this.scroll = document.documentElement.scrollTop
+			this.scroll = document.documentElement.scrollTop || document.body.scrollTop
 			if(this.scroll>300){
 				this.hide = true;
 			}else{

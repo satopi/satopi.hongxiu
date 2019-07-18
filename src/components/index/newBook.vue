@@ -292,7 +292,6 @@
                     clearInterval(timer);
                 }
         	},30)
-//			document.documentElement.scrollTop = document.body.scrollTop = 0;
 		},
 		top(){
 			this.scroll = document.documentElement.scrollTop || document.body.scrollTop

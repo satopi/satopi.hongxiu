@@ -64,6 +64,10 @@
 				</div>
 			</div>
 		</transition>
+		<!--回到顶部-->
+		<div class="backTop" @click="backTop()" v-show="hide">
+			<img src="../../assets/img/huidaodingbu.svg"/>
+		</div>
 		<!--内容-->
 		<mt-navbar v-model="selected" id="rank">
 		  <mt-tab-item id="1">热销榜</mt-tab-item>
@@ -489,6 +493,24 @@
         	down(a,this.icon);
         	this.show = !this.show
         },
+        backTop(){
+        	let timer = setInterval(function(){
+        		var oTop = document.documentElement.scrollTop || document.body.scrollTop;
+        		var speed = Math.floor(-oTop/6)
+        		document.documentElement.scrollTop = document.body.scrollTop = oTop + speed
+        		if (oTop == 0) {
+                    clearInterval(timer);
+                }
+        	},30)
+		},
+		top(){
+			this.scroll = document.documentElement.scrollTop || document.body.scrollTop
+			if(this.scroll>300){
+				this.hide = true;
+			}else{
+				this.hide = false;
+			}
+		},
         shrink(a){
         	shrinking(a)
         	this.icon = 'icon-caidan'
