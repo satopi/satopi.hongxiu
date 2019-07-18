@@ -195,11 +195,6 @@
 </template>
 
 <style scoped>
-	b{
-		position: fixed;
-		top: 50%;
-		left: 50%;
-	}
 	.iconfont{
 		color: white;
 		font-size: 3vh;
