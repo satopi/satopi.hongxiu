@@ -76,7 +76,7 @@
 		  	<section class="container">
 			  	<p>
 			  		<span>共1本</span>
-			  		<span>编辑</span>
+			  		<!--<span>编辑</span>-->
 			  	</p>
 			  	<p>我的书单</p>
 			  	<div class="booksBox">
