@@ -68,7 +68,6 @@
 		<div class="backTop" @click="backTop()" v-show="hide">
 			<img src="../../assets/img/huidaodingbu.svg"/>
 		</div>	
-		<b>{{scroll}}ghcgcgcgcgc</b>
 		<!--大神新书-->
 		<section class="container">
 			<div class="Title">
@@ -290,7 +289,7 @@
         	this.show = !this.show
         },
         backTop(){
-			document.documentElement.scrollTop = 0;
+			document.documentElement.scrollTop =  document.documentElement.scrollTop = document.body.scrollTop = 0;
 		},
 		top(){
 			this.scroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
