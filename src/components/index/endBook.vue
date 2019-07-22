@@ -82,7 +82,7 @@
 				</h3>
 			</div>
 			<ul class="essayBookList">
-				<li v-for="(item,index) in endBookList[0].endList">
+				<li v-for="(item,index) in endList">
 					<router-link to="/details">
 						<img v-lazy="item.src" class="picBox"/>
 						<div class="hotBookText">
@@ -118,7 +118,7 @@
 				</h3>
 			</div>
 			<ul class="essayBookList">
-				<li v-for="(item,index) in endBookList[1].classicList">
+				<li v-for="(item,index) in classicList">
 					<router-link to="/details">
 						<img v-lazy="item.src" class="picBox"/>
 						<div class="hotBookText">
@@ -155,7 +155,7 @@
 				</h3>
 			</div>
 			<ul class="essayBookList">
-				<li v-for="(item,index) in endBookList[2].bestList">
+				<li v-for="(item,index) in bestList">
 					<router-link to="/details">
 						<img v-lazy="item.src" class="picBox"/>
 						<div class="hotBookText">
@@ -252,7 +252,9 @@
             iconfont:'iconfont',
             icon:'icon-caidan',
             guide:'',
-            endBookList:[]
+            endList:[],
+            bestList:[],
+            classicList:[]
         }
     },
     
@@ -260,7 +262,9 @@
     	window.addEventListener('scroll',this.top)
     	this.$http.get('./data/endBooks.json')
     	.then((res)=>{
-    		this.endBookList = res.data.endBookList
+    		this.classicList = res.data.classicList
+    		this.endList = res.data.endList
+    		this.bestList = res.data.bestList
     	})
     	.catch(()=>{
     		console.log("请求失败！")

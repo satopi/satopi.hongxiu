@@ -15,7 +15,7 @@
 		</header>
 		<!--轮播-->
 		<mt-swipe :auto="2000" @change="handleChange">
-		  <mt-swipe-item v-for="(item,index) in indexList[11].lunboList">
+		  <mt-swipe-item v-for="(item,index) in lunboList">
 		  	<img :src="item"/>
 		  </mt-swipe-item>
 		</mt-swipe>
@@ -79,7 +79,7 @@
 					热门小说
 				</h3>
 			</div>
-			<div class="hotBook" v-for="(item,index) in indexList[0].hotTitle">
+			<div class="hotBook" v-for="(item,index) in hotTitle">
 				<router-link to="/details">
 					<img v-lazy="item.src" class="picBox"/>
 					<div class="hotBookText">
@@ -99,7 +99,7 @@
 				</router-link>
 			</div>
 			<ul class="hotBookList">
-				<li v-for="(item,index) in indexList[1].hotList">
+				<li v-for="(item,index) in hotList">
 					<router-link to="/details">
 						<img v-lazy="item.src"/>
 						<div class="hotBookListText">
@@ -125,7 +125,7 @@
 				<p class="essay-details">每日甄选精品好文</p>
 			</div>
 			<ul class="essayBookList">
-				<li v-for="(item,index) in indexList[2].essayList">
+				<li v-for="(item,index) in essayList">
 					<router-link to="/details">
 						<img v-lazy="item.src" class="picBox"/>
 						<div class="hotBookText">
@@ -160,7 +160,7 @@
 				</h3>
 			</div>
 			<ul class="BookList">
-				<li v-for="(item,index) in indexList[3].introList">
+				<li v-for="(item,index) in introList">
 					<router-link to="/details">
 						<img v-lazy="item.src"/>
 						<p>{{item.title}}</p>
@@ -188,7 +188,7 @@
 				</span>
 			</div>
 			<ul class="BookList">
-				<li v-for="(item,index) in indexList[4].rankList1">
+				<li v-for="(item,index) in rankList1">
 					<router-link to="/details">
 						<img v-lazy="item.src"/>
 						<p>{{item.title}}</p>
@@ -202,7 +202,7 @@
 				</span>
 			</div>
 			<ul class="BookList">
-				<li v-for="(item,index) in indexList[5].rankList2">
+				<li v-for="(item,index) in rankList2">
 					<router-link to="/details">
 						<img v-lazy="item.src"/>
 						<p>{{item.title}}</p>
@@ -247,7 +247,7 @@
 				</h3>
 			</div>
 			<ul class="BookList">
-				<li v-for="(item,index) in indexList[6].freeList">
+				<li v-for="(item,index) in freeList">
 					<router-link to="/details">
 						<img v-lazy="item.src"/>
 						<p>{{item.title}}</p>
@@ -276,7 +276,7 @@
 				</h3>
 			</div>
 			<ul class="classifyList">
-				<li v-for="(item,index) in indexList[12].classifyList">
+				<li v-for="(item,index) in classifyList">
 					<div class="textBox1">
 						<router-link to="/classifyDetails">
 							<div class="classifyTitle">{{item.title}}</div>
@@ -343,7 +343,7 @@
 				</h3>
 			</div>
 			<ul class="essayBookList">
-				<li v-for="(item,index) in indexList[7].newList">
+				<li v-for="(item,index) in newList">
 					<router-link to="/details">
 						<img v-lazy="item.src" class="picBox"/>
 						<div class="hotBookText">
@@ -378,7 +378,7 @@
 				</h3>
 			</div>
 			<ul class="essayBookList">
-				<li v-for="(item,index) in indexList[8].endList">
+				<li v-for="(item,index) in endList">
 					<router-link to="/details">
 						<img v-lazy="item.src" class="picBox"/>
 						<div class="hotBookText">
@@ -408,7 +408,7 @@
 				</h3>
 			</div>
 			<ul class="essayBookList">
-				<li v-for="(item,index) in indexList[9].updateList">
+				<li v-for="(item,index) in updateList">
 					<router-link to="/details">
 						<img v-lazy="item.src" class="picBox"/>
 						<div class="hotBookText">
@@ -889,7 +889,20 @@
 				show:false,
 				indexList:[],
 				advert1:'',
-				advert2:''
+				advert2:'',
+				hotTitle:[],
+				hotList:[],
+				essayList:[],
+				introList:[],
+				rankList1:[],
+				rankList2:[],
+				freeList:[],
+				newList:[],
+				endList:[],
+				updateList:[],
+				advertList:[],
+				lunboList:[],
+				classifyList:[]
 			}
 		},
 		
@@ -898,9 +911,21 @@
 			window.addEventListener('scroll',this.top)
 			this.$http.get('./data/index.json')
 			.then((res)=>{
-				this.indexList = res.data.indexList
-				this.advert1 = res.data.indexList[10].advertList.src1
-				this.advert2 = res.data.indexList[10].advertList.src2
+				this.hotTitle = res.data.hotTitle
+				this.hotList = res.data.hotList
+				this.essayList = res.data.essayList
+				this.introList = res.data.introList
+				this.rankList1 = res.data.rankList1
+				this.rankList2 = res.data.rankList2
+				this.freeList = res.data.freeList
+				this.newList = res.data.newList
+				this.endList = res.data.endList
+				this.updateList = res.data.updateList
+				this.advertList = res.data.advertList
+				this.lunboList = res.data.lunboList
+				this.classifyList = res.data.classifyList
+				this.advert1 = res.data.advertList.src1
+				this.advert2 = res.data.advertList.src2
 			})
 			.catch(()=>{
 				console.log("请求失败！")

@@ -120,7 +120,7 @@
 		<!--广告栏-->
 		<div class="advert">
 			<router-link to="/details">
-				<img v-lazy="detailsList[0].advert" class="advert"/>
+				<img v-lazy="advert" class="advert"/>
 			</router-link>
 		</div>
 		<div class="diveder"></div>
@@ -160,7 +160,7 @@
 		<div class="booksList container">
 			<h2>相关书单</h2>
 			<ul class="related">
-				<li v-for="(item,index) in detailsList[1].booksList">
+				<li v-for="(item,index) in booksList">
 					<div class="picBox">
 						<img v-lazy="item.src1"/>
 						<img v-lazy="item.src2"/>
@@ -178,7 +178,7 @@
 		<div id="others" class="horizontal-scroll container">
 			<h2>作家的其他作品</h2>
 			<ul class="list">
-				<li v-for="(item,index) in detailsList[2].others">
+				<li v-for="(item,index) in others">
 					<img v-lazy="item.src"/>
 					<p>{{item.title}}</p>
 				</li>
@@ -188,7 +188,7 @@
 		<div id="same" class="horizontal-scroll container">
 			<h2>同类推荐</h2>
 			<ul class="list">
-				<li v-for="(item,index) in detailsList[3].same">
+				<li v-for="(item,index) in same">
 					<img v-lazy="item.src"/>
 					<p>{{item.title}}</p>
 					<p>{{item.author}}</p>
@@ -597,7 +597,10 @@
             iconfont:'iconfont',
             icon:'icon-caidan',
             guide:'',
-            detailsList:[],
+            advert:'',
+            booksList:[],
+            others:[],
+            same:[],
             close:true
         }
     },
@@ -606,7 +609,10 @@
     	window.addEventListener('scroll',this.top)
     	this.$http.get('./data/details.json')
     	.then((res)=>{
-    		this.detailsList = res.data.detailsList
+    		this.others = res.data.others
+    		this.booksList = res.data.booksList
+    		this.same = res.data.same
+    		this.advert = res.data.advert
     	})
     	.catch(()=>{
     		console.log("请求失败！")

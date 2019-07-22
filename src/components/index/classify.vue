@@ -68,7 +68,7 @@
 		<div class="container">
 			<p class="list-title">女生频道</p>
 			<ul class="girls">
-				<li v-for="(item,index) in classifyList[0].girlsList">
+				<li v-for="(item,index) in girlsList">
 					<router-link to="/classifyDetails">
 						<img v-lazy="item.src"/>
 						<div class="details">
@@ -82,7 +82,7 @@
 		<div class="container">
 			<p class="list-title">男生频道</p>
 			<ul class="boys">
-				<li v-for="(item,index) in classifyList[1].boysList">
+				<li v-for="(item,index) in boysList">
 					<router-link to="/classifyDetails">
 						<img v-lazy="item.src"/>
 						<div class="details">
@@ -226,13 +226,15 @@
             iconfont:'iconfont',
             icon:'icon-caidan',
             guide:'',
-            classifyList:[]
+            girlsList:[],
+            boysList:[]
         }
     },
     mounted(){
     	this.$http.get('./data/classify.json')
     	.then((res)=>{
-    		this.classifyList = res.data.classifyList
+    		this.girlsList = res.data.girlsList,
+    		this.boysList = res.data.boysList
     	})
     	.catch(()=>{
     		console.log("请求失败！")

@@ -87,7 +87,7 @@
 		<mt-tab-container v-model="selected" id="rankList">
 		  <mt-tab-container-item id="1">
 		  	<ul class="essayBookList">
-				<li v-for="(item,index) in rankList[1].hotDetails">
+				<li v-for="(item,index) in hotDetails">
 					<router-link to="/details">
 						<span class="top-number">{{index+1}}</span>
 						<img v-lazy="item.src" class="picBox"/>
@@ -110,7 +110,7 @@
 		  </mt-tab-container-item>
 		  <mt-tab-container-item id="2">
 		  	<ul class="essayBookList">
-				<li v-for="(item,index) in rankList[2].newDetails">
+				<li v-for="(item,index) in newDetails">
 					<router-link to="/details">
 						<span class="top-number">{{index+1}}</span>
 						<img v-lazy="item.src" class="picBox"/>
@@ -133,7 +133,7 @@
 		  </mt-tab-container-item>
 		  <mt-tab-container-item id="3">
 		  	<ul class="essayBookList">
-				<li v-for="(item,index) in rankList[3].endDetails">
+				<li v-for="(item,index) in endDetails">
 					<router-link to="/details">
 						<span class="top-number">{{index+1}}</span>
 						<img v-lazy="item.src" class="picBox"/>
@@ -156,7 +156,7 @@
 		  </mt-tab-container-item>
 		  <mt-tab-container-item id="4">
 		  	<ul class="essayBookList">
-				<li v-for="(item,index) in rankList[4].clickDetails">
+				<li v-for="(item,index) in clickDetails">
 					<router-link to="/details">
 						<span class="top-number">{{index+1}}</span>
 						<img v-lazy="item.src" class="picBox"/>
@@ -179,7 +179,7 @@
 		  </mt-tab-container-item>
 		  <mt-tab-container-item id="5">
 		  	<ul class="essayBookList">
-				<li v-for="(item,index) in rankList[5].introDetails">
+				<li v-for="(item,index) in introDetails">
 					<router-link to="/details">
 						<span class="top-number">{{index+1}}</span>
 						<img v-lazy="item.src" class="picBox"/>
@@ -202,7 +202,7 @@
 		  </mt-tab-container-item>
 		  <mt-tab-container-item id="6">
 		  	<ul class="essayBookList">
-				<li v-for="(item,index) in rankList[6].updateDetails">
+				<li v-for="(item,index) in updateDetails">
 					<router-link to="/details">
 						<span class="top-number">{{index+1}}</span>
 						<img v-lazy="item.src" class="picBox"/>
@@ -225,7 +225,7 @@
 		  </mt-tab-container-item>
 		  <mt-tab-container-item id="7">
 		  	<ul class="essayBookList">
-				<li v-for="(item,index) in rankList[7].cloudDetails">
+				<li v-for="(item,index) in cloudDetails">
 					<router-link to="/details">
 						<span class="top-number">{{index+1}}</span>
 						<img v-lazy="item.src" class="picBox"/>
@@ -248,7 +248,7 @@
 		  </mt-tab-container-item>
 		  <mt-tab-container-item id="8">
 		  	<ul class="essayBookList">
-				<li v-for="(item,index) in rankList[8].giftDetails">
+				<li v-for="(item,index) in giftDetails">
 					<router-link to="/details">
 						<span class="top-number">{{index+1}}</span>
 						<img v-lazy="item.src" class="picBox"/>
@@ -271,7 +271,7 @@
 		  </mt-tab-container-item>
 		  <mt-tab-container-item id="9">
 		  	<ul class="essayBookList">
-				<li v-for="(item,index) in rankList[9].loveDetails">
+				<li v-for="(item,index) in loveDetails">
 					<router-link to="/details">
 						<span class="top-number">{{index+1}}</span>
 						<img v-lazy="item.src" class="picBox"/>
@@ -294,7 +294,7 @@
 		  </mt-tab-container-item>
 		  <mt-tab-container-item id="10">
 		  	<ul class="essayBookList">
-				<li v-for="(item,index) in rankList[10].readDetails">
+				<li v-for="(item,index) in readDetails">
 					<router-link to="/details">
 						<span class="top-number">{{index+1}}</span>
 						<img v-lazy="item.src" class="picBox"/>
@@ -317,7 +317,7 @@
 		  </mt-tab-container-item>
 		  <mt-tab-container-item id="11">
 		  	<ul class="essayBookList">
-				<li v-for="(item,index) in rankList[11].writerDetails">
+				<li v-for="(item,index) in writerDetails">
 					<router-link to="/details">
 						<span class="top-number">{{index+1}}</span>
 						<img v-lazy="item.src" class="picBox"/>
@@ -457,9 +457,19 @@
             iconfont:'iconfont',
             icon:'icon-caidan',
             guide:'',
-            rankList:[],
-            tabDetails:[],
+            hotDetails:[],
+            newDetails:[],
+            endDetails:[],
+            clickDetails:[],
+            introDetails:[],
+            updateDetails:[],
+            cloudDetails:[],
+            giftDetails:[],
+            loveDetails:[],
+            readDetails:[],
+            writerDetails:[],
             selected:"1",
+            hide:false
         }
     },
     
@@ -467,8 +477,18 @@
 //  	this.change()
     	this.$http.get('./data/rank.json')
     	.then((res)=>{
-    		this.rankList = res.data.rankList
-    		this.tabDetails = this.rankList[1].hotDetails
+    		this.hotDetails = res.data.hotDetails
+    		this.newDetails = res.data.newDetails
+    		this.endDetails = res.data.endDetails
+    		this.clickDetails = res.data.clickDetails
+    		this.introDetails = res.data.introDetails
+    		this.updateDetails = res.data.updateDetails
+    		this.cloudDetails = res.data.cloudDetails
+    		this.giftDetails = res.data.giftDetails
+    		this.loveDetails = res.data.loveDetails
+    		this.readDetails = res.data.readDetails
+    		this.writerDetails = res.data.writerDetails
+    		this.hotDetails = this.rankList[1].hotDetails
     	})
     	.catch(()=>{
     		console.log("请求失败！")
